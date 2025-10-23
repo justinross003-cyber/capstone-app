@@ -5,7 +5,7 @@ import uuid
 from .db import get_db
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
-app.secret_key = "dev-secret-change-me"  # for flash messages only (dev)
+app.secret_key = "dev-secret-change-me" 
 
 @app.route("/")
 def home():
