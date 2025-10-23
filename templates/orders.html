@@ -1,0 +1,53 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Orders • Capstone Corp</title>
+  <style>
+    body { font-family: Segoe UI, Roboto, Arial, sans-serif; max-width: 900px; margin: 2rem auto; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f5f5f5; text-align: left; }
+    .flash-ok { color: green; }
+    .flash-error { color: crimson; }
+    form.inline { display: inline-flex; gap: 0.5rem; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>Orders for {{ customer['Name'] if customer else customer_id }}</h1>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+      {% for category, message in messages %}
+        <li class="flash-{{category}}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <h3>Add Order</h3>
+  <form method="post" action="/orders/{{ customer_id }}/new" class="inline">
+    <input type="number" step="0.01" min="0.01" name="total" placeholder="Total (e.g., 19.99)" required>
+    <button type="submit">Create</button>
+  </form>
+
+  <h3>All Orders</h3>
+  <table>
+    <thead>
+      <tr><th>OrderId</th><th>Total</th><th>Created</th></tr>
+    </thead>
+    <tbody>
+      {% for o in orders %}
+      <tr>
+        <td>{{ o["OrderId"] }}</td>
+        <td>{{ o["Total"] }}</td>
+        <td>{{ o["CreatedAt"] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="/customers">← Customers</a> | <a href="/">Home</a></p>
+</body>
+</html>
