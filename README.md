@@ -9,7 +9,6 @@ A tiny Flask web app with a SQLite database to demonstrate a simple tenant porta
 
 ## 1) Prereqs
 - Python 3.11+
-- (Optional) VS Code
 - Docker Desktop (for container runs)
 - Git
 
@@ -45,17 +44,8 @@ docker run -p 8080:8080 capstone-flask:dev
 # open http://localhost:8080
 ```
 
-## 5) Notes for Azure
-- This app is ready for **App Service for Containers** (Linux).
-- For Azure SQL later:
-  - Replace SQLite with `pyodbc` and a proper connection string.
-  - Use Managed Identity with Access Tokens if you want passwordless DB access.
-- Haider should provision:
-  - ACR (push your image here)
-  - App Service (Linux) configured to pull your image
-  - VNet integration + Private Endpoint for Azure SQL (if using Azure SQL)
 
-## 6) Git/GitHub (quickstart)
+## 5) Git/GitHub (quickstart)
 ```bash
 git init
 git add .
