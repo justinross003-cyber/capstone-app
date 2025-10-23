@@ -1,5 +1,5 @@
 
-# Stage 1: build environment (optional for Python, but keep clean)
+# Stage 1: build environment
 FROM python:3.12-slim AS base
 
 # Set workdir
