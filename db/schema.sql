@@ -1,5 +1,3 @@
-
--- DROP TABLES if re-running (dev convenience)
 DROP TABLE IF EXISTS Orders;
 DROP TABLE IF EXISTS Customers;
 
